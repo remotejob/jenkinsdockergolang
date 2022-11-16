@@ -1,25 +1,36 @@
-node {
-    checkout scm
-
-    docker.withRegistry() {
-
-        def customImage = docker.build("jenkinsdockergolang")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
-    }
+pipeline {
+environment {
+registry = "https://hub.docker.com/remotejob"
+registryCredential = 'docker-hub'
+dockerImage = 'golang'
 }
-
-// pipeline {
-//     // agent {
-//     //     docker { image 'golang:1.19-alpine' }
-//     // }
-//     agent { dockerfile true }
-//     stages {
-//         stage('Test') {
-//             steps {
-//                 sh 'ls -trl'
-//             }
-//         }
-//     }
+agent any
+stages {
+// stage('Cloning our Git') {
+// steps {
+// git 'https://github.com/remotejob/jenkinsdockergolang$.git'
 // }
+// }
+stage('Building our image') {
+steps{
+script {
+dockerImage = docker.build registry + ":$BUILD_NUMBER"
+}
+}
+}
+stage('Deploy our image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
+}
+}
+}
+stage('Cleaning up') {
+steps{
+sh "docker rmi $registry:$BUILD_NUMBER"
+}
+}
+}
+}
