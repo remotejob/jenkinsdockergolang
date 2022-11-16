@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "https://hub.docker.com/remotejob"
+registry = "remotejob/jenkinsdockergolang"
 registryCredential = 'docker-hub'
 dockerImage = 'golang'
 }
