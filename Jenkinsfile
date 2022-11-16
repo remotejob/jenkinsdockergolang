@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('hub.docker.com', 'docker-hub') {
+    docker.withRegistry() {
 
         def customImage = docker.build("jenkinsdockergolang")
 
