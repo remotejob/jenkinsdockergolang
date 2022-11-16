@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # specify the base image to  be used for the application, alpine or ubuntu
-FROM golang:1.19-alpine
+FROM golang
 
 # create a working directory inside the image
 WORKDIR /app
