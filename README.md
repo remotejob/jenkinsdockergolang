@@ -1,3 +1,3 @@
 # jenkinsdockergolang
 
-main
+main json
