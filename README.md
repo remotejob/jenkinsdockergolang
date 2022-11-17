@@ -12,7 +12,7 @@ kubectl delete -f pod.yaml
 kubectl apply -f service.yaml
 kubectl delete -f service.yaml
 
-kubectl expose deployment jenkinsdockegolang-depl --type=LoadBalancer --name=jenkinsdockegolang-service
+kubectl expose deployment jenkinsdockegolang-depl --type=LoadBalancer --name=jenkinsdockegolang-svc
 
 curl http://144.21.36.80:9080
 curl http://:9080
