@@ -1,30 +1,30 @@
 package main
 
 import (
-"encoding/json"
-"fmt"
-"log"
-"net/http"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net/http"
 )
 
 type Time struct {
-CurrentTime string `json:"current_time"`
+	CurrentTime string `json:"current_time"`
 }
 
 func main() {
-// defining router
-mux := http.NewServeMux()
-mux.HandleFunc("/time", getTime)
+	// defining router
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", getTime)
 
-// starting server
-fmt.Println("Server is running at 127.0.0.1:9080")
-log.Fatal(http.ListenAndServe( "localhost:9080", mux))
+	// starting server
+	fmt.Println("Server is running at 127.0.0.1:9080")
+	log.Fatal(http.ListenAndServe(":9080", mux))
 }
 
 func getTime(w http.ResponseWriter, r *http.Request) {
-currentTime := []Time{
-    { CurrentTime: http.TimeFormat },
-}
+	currentTime := []Time{
+		{CurrentTime: http.TimeFormat},
+	}
 
-json.NewEncoder(w).Encode(currentTime)
+	json.NewEncoder(w).Encode(currentTime)
 }

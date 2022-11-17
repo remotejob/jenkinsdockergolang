@@ -1,0 +1,38 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: jenkinsdockegolang-svc
+#   namespace: webs-dev
+# spec:
+#   ports:
+#     - port: 9080
+#       targetPort: 9080
+#       protocol: TCP
+#   selector:
+#     app:  jenkinsdockegolang-depl
+
+# ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkinsdockegolang-depl
+  namespace: webs-dev
+spec:  
+  selector:
+    matchLabels:
+      app: jenkinsdockegolang-depl
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jenkinsdockegolang-depl
+    spec:
+      # nodeName: k3sclientarm00
+      containers:
+      - name: jenkinsdockergolang
+        image: remotejob/jenkinsdockergolang:latest
+        ports:
+        - containerPort: 9080
+        imagePullPolicy: Always
+        # image: remotejob/rustwebserver:scratch      
+        # image: remotejob/k8staticservergolang:latest

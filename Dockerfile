@@ -19,7 +19,7 @@ COPY *.go ./
 RUN go build -o /godocker
  
 # tells Docker that the container listens on specified network ports at runtime
-EXPOSE 8080
+EXPOSE 9080
 
 # command to be used to execute when the image is used to start a container
 CMD [ "/godocker" ]
