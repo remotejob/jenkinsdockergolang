@@ -16,7 +16,7 @@ RUN go mod download
 COPY *.go ./
 
 # compile application
-RUN go CGO_ENABLED=0 GOOS=linux GOARCH=amd64 build -o /godocker -ldflags="-w -s"
+RUN go build -o /godocker -ldflags="-w -s"
  
 # tells Docker that the container listens on specified network ports at runtime
 EXPOSE 9080
