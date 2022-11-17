@@ -18,3 +18,8 @@ curl http://144.21.36.80:9080
 curl http://:9080
 
 kubectl apply -f load-balancer-example.yaml
+
+https://keel.sh/docs/#prerequisites
+kubectl apply -f https://sunstone.dev/keel?namespace=keel&username=admin&password=admin&tag=latest
+
+kubectl --namespace=kube-system delete pods -l "app=keel"

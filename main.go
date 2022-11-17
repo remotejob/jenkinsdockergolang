@@ -23,7 +23,7 @@ func main() {
 
 func getTime(w http.ResponseWriter, r *http.Request) {
 	currentTime := []Time{
-		{CurrentTime: "0000000"},
+		{CurrentTime: "1111111"},
 	}
 
 	json.NewEncoder(w).Encode(currentTime)
