@@ -23,3 +23,5 @@ https://keel.sh/docs/#prerequisites
 kubectl apply -f https://sunstone.dev/keel?namespace=keel&username=admin&password=admin&tag=latest
 
 kubectl --namespace=kube-system delete pods -l "app=keel"
+
+kubectl rollout restart deployment  jenkinsdockegolang-depl -n webs-dev
